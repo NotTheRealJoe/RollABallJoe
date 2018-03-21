@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private int count;
     public Text countText;
+    public Text winText;
     
     void Start() {
 	rb = GetComponent<Rigidbody>();
 	count = 0;
 	SetCountText();
+	winText.text = "";
     }
     
     void FixedUpdate() {
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour {
 	    other.gameObject.SetActive(false);
 	    count++;
 	    SetCountText();
+	    if(count > 13) {
+		winText.text = "Congratulations, You win!";
+	    }
 	}
     }
 
